@@ -3,6 +3,7 @@
 import json
 import requests
 import csv
+import update_sheet
 
 URL = 'https://pc-api.polestar.com/eu-north-1/preconfigured-cars/'
 DEALERS = json.loads('''
@@ -128,3 +129,4 @@ def fetch_data():
         
 if __name__ == '__main__':
     fetch_data()
+    update_sheet.update_sheet()

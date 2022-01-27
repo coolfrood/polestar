@@ -37,7 +37,7 @@ def update_sheet():
     credentials = get_creds()
     spreadsheet_id = config['spreadsheet_id']
     API = build('sheets', 'v4', credentials=credentials)
-    today = date.today().strftime('YYYY-mm-dd')
+    today = date.today().strftime('%Y-%m-%d')
     sheet = API.spreadsheets()
     body = {
         'requests': [
@@ -46,8 +46,26 @@ def update_sheet():
     }
     request = sheet.batchUpdate(spreadsheetId=spreadsheet_id, body=body)
     response = request.execute()
-    sheet_id = response['properties']['sheetId']
-    print(sheet_id)
+    #print(response)
+    sheet_id = response['replies'][0]['addSheet']['properties']['sheetId']
+
+    paste_data = {
+        'requests': [
+            {'pasteData': {
+                'coordinate': {
+                    'sheetId': sheet_id,
+                    'rowIndex': '0',
+                    'columnIndex': '0'
+                },
+                'data': open('cars.csv').read(),
+                'type': 'PASTE_NORMAL',
+                'delimiter': ','
+            }}
+        ]
+    }
+    request = sheet.batchUpdate(spreadsheetId=spreadsheet_id, body=paste_data)
+    response = request.execute()
+    print(response)
 
 if __name__ == '__main__':
     update_sheet() 
