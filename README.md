@@ -19,4 +19,4 @@ in a Google spreadsheet
 ```
 
 4. Install Google client library with instructions [here](https://developers.google.com/sheets/api/quickstart/python).
-5. Run `./update_sheet.py`
+5. Run `./get_inventory.py`
