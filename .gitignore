@@ -47,4 +47,6 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
-
+*.csv
+creds.json
+config.json
