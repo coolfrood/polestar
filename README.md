@@ -9,7 +9,7 @@ in a Google spreadsheet
 
 1. Create a new spreadsheet in Google docs, get its ID from the URL
 2. Follow Google Cloud documentation [here](https://developers.google.com/workspace/guides/create-project).
-   Create and download new credentials into `cred.json`
+   Create and download new credentials into `creds.json`
 3. Create a `config.json` file with following contents:
 
 ```
